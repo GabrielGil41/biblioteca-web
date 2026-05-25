@@ -1,0 +1,8 @@
+const livro = {
+    titulo: String,
+    autor: String,
+    categoria: String,
+    ano: Number
+};
+
+module.exports = livro;

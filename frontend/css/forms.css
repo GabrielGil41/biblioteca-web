@@ -1,0 +1,23 @@
+/*FORMULÁRIOS*/
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input{
+    padding: 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    outline: none;
+}
+
+.form-group input:focus{
+    border-color: var(--primary);
+}
