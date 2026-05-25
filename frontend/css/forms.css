@@ -1,4 +1,45 @@
-/*FORMULÁRIOS*/
+.modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active{
+    display: flex;
+}
+
+.modal-content{
+    background: white;
+    width: 650px;
+    max-width: 95%;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.btn-close{
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.form-row{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
 .form-group{
     display: flex;
@@ -11,13 +52,31 @@
     font-weight: 500;
 }
 
-.form-group input{
+.form-group input,
+.form-group select{
     padding: 12px;
     border: 1px solid #D1D5DB;
     border-radius: 10px;
     outline: none;
+    font-family: inherit;
 }
 
-.form-group input:focus{
+.form-group input:focus,
+.form-group select:focus{
     border-color: var(--primary);
+}
+
+.modal-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-secondary{
+    background: #E5E7EB;
+    color: #111827;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
 }

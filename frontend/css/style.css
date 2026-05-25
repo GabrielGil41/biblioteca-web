@@ -91,3 +91,32 @@ body{
 .btn:hover{
     background: var(--primary-dark);
 }
+
+.sidebar nav a.active{
+    background: var(--primary);
+}
+
+.subtitle{
+    color: var(--gray);
+    margin-top: 5px;
+}
+
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-box{
+    background: white;
+    padding: 12px 18px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.search-box input{
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
