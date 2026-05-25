@@ -55,7 +55,7 @@
                 <p class="subtitle">Gerencie o acervo da biblioteca</p>
             </div>
 
-            <button class="btn" onclick="abrirModalLivro()">
+            <button class="btn" id="btn-novo-livro">
                 <i class="fa-solid fa-plus"></i>
                 Novo Livro
             </button>
@@ -91,7 +91,6 @@
                         type="text" 
                         id="buscar-livro" 
                         placeholder="Buscar livro..."
-                        onkeyup="buscarLivro()"
                     >
                 </div>
             </div>
@@ -109,6 +108,10 @@
                     </tr>
                 </thead>
 
+                <!-- 
+                    TABELA VAZIA.
+                    O backend/JS vai preencher os livros aqui.
+                -->
                 <tbody id="tabela-livros"></tbody>
             </table>
 
@@ -122,7 +125,7 @@
             <div class="modal-header">
                 <h2 id="titulo-modal">Cadastrar Livro</h2>
 
-                <button class="btn-close" onclick="fecharModalLivro()">
+                <button class="btn-close" type="button" id="btn-fechar-modal-livro">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -133,38 +136,39 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Título</label>
-                        <input type="text" id="titulo" placeholder="Ex: Dom Casmurro" required>
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ex: Dom Casmurro" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Autor</label>
-                        <input type="text" id="autor" placeholder="Ex: Machado de Assis" required>
+                        <label for="autor">Autor</label>
+                        <input type="text" id="autor" name="autor" placeholder="Ex: Machado de Assis" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Categoria</label>
-                        <input type="text" id="categoria" placeholder="Ex: Romance" required>
+                        <label for="categoria">Categoria</label>
+                        <input type="text" id="categoria" name="categoria" placeholder="Ex: Romance" required>
                     </div>
 
                     <div class="form-group">
-                        <label>ISBN</label>
-                        <input type="text" id="isbn" placeholder="Ex: 978-85-359-0277-0" required>
+                        <label for="isbn">ISBN</label>
+                        <input type="text" id="isbn" name="isbn" placeholder="Ex: 978-85-359-0277-0" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Status</label>
-                    <select id="status" required>
+                    <label for="status">Status</label>
+                    <select id="status" name="status" required>
+                        <option value="">Selecione o status</option>
                         <option value="Disponível">Disponível</option>
                         <option value="Emprestado">Emprestado</option>
                     </select>
                 </div>
 
                 <div class="modal-actions">
-                    <button type="button" class="btn-secondary" onclick="fecharModalLivro()">
+                    <button type="button" class="btn-secondary" id="btn-cancelar-livro">
                         Cancelar
                     </button>
 
@@ -178,6 +182,7 @@
         </div>
     </div>
 
+    <script src="js/api.js"></script>
     <script src="js/livros.js"></script>
 
 </body>
