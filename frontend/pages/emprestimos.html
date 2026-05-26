@@ -7,25 +7,28 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tabelas.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <link rel="stylesheet" href="css/emprestimos.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tabelas.css">
+    <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/emprestimos.css">
 </head>
 
 <body>
 
     <aside class="sidebar">
+
         <div class="logo">
             <i class="fa-solid fa-book"></i>
             Biblioteca
         </div>
 
         <nav>
+
             <a href="index.html">
                 <i class="fa-solid fa-house"></i>
                 Dashboard
@@ -45,26 +48,33 @@
                 <i class="fa-solid fa-right-left"></i>
                 Empréstimos
             </a>
+
         </nav>
+
     </aside>
 
     <main class="main">
 
         <div class="topbar">
+
             <div>
                 <h1>Empréstimos</h1>
-                <p class="subtitle">Controle empréstimos, devoluções e atrasos</p>
+                <p class="subtitle">
+                    Controle empréstimos, devoluções e atrasos
+                </p>
             </div>
 
             <button class="btn" id="btn-novo-emprestimo">
                 <i class="fa-solid fa-plus"></i>
                 Novo Empréstimo
             </button>
+
         </div>
 
         <section class="emprestimos-cards">
 
             <div class="emprestimo-card">
+
                 <div class="card-icon purple">
                     <i class="fa-solid fa-right-left"></i>
                 </div>
@@ -73,9 +83,11 @@
                     <h2 id="total-emprestimos">0</h2>
                     <p>Total de empréstimos</p>
                 </div>
+
             </div>
 
             <div class="emprestimo-card">
+
                 <div class="card-icon green">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
@@ -84,9 +96,11 @@
                     <h2 id="emprestimos-ativos">0</h2>
                     <p>Empréstimos ativos</p>
                 </div>
+
             </div>
 
             <div class="emprestimo-card">
+
                 <div class="card-icon orange">
                     <i class="fa-solid fa-clock"></i>
                 </div>
@@ -95,9 +109,11 @@
                     <h2 id="emprestimos-pendentes">0</h2>
                     <p>Devoluções pendentes</p>
                 </div>
+
             </div>
 
             <div class="emprestimo-card">
+
                 <div class="card-icon red">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
@@ -106,6 +122,7 @@
                     <h2 id="emprestimos-atrasados">0</h2>
                     <p>Empréstimos atrasados</p>
                 </div>
+
             </div>
 
         </section>
@@ -113,11 +130,17 @@
         <section class="table-container">
 
             <div class="table-header">
+
                 <h2>Lista de Empréstimos</h2>
 
                 <div class="table-actions">
+
                     <div class="search-box">
-                        <input type="text" id="buscar-emprestimo" placeholder="Buscar empréstimo...">
+                        <input
+                            type="text"
+                            id="buscar-emprestimo"
+                            placeholder="Buscar empréstimo..."
+                        >
                     </div>
 
                     <select id="filtro-status" class="filter-select">
@@ -126,11 +149,15 @@
                         <option value="devolvido">Devolvidos</option>
                         <option value="atrasado">Atrasados</option>
                     </select>
+
                 </div>
+
             </div>
 
             <table>
+
                 <thead>
+
                     <tr>
                         <th>ID</th>
                         <th>Usuário</th>
@@ -140,11 +167,13 @@
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
+
                 </thead>
 
                 <tbody id="tabela-emprestimos">
-                    
+
                 </tbody>
+
             </table>
 
         </section>
@@ -156,11 +185,13 @@
         <div class="modal-content">
 
             <div class="modal-header">
+
                 <h2>Cadastrar Empréstimo</h2>
 
                 <button class="btn-close" id="btn-fechar-modal">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
+
             </div>
 
             <form id="form-emprestimo">
@@ -168,55 +199,86 @@
                 <input type="hidden" id="emprestimo-id">
 
                 <div class="form-row">
+
                     <div class="form-group">
+
                         <label>Usuário</label>
+
                         <select id="usuario">
                             <option value="">Selecione um usuário</option>
                         </select>
+
                     </div>
 
                     <div class="form-group">
+
                         <label>Livro</label>
+
                         <select id="livro">
                             <option value="">Selecione um livro</option>
                         </select>
+
                     </div>
+
                 </div>
 
                 <div class="form-row">
+
                     <div class="form-group">
+
                         <label>Data do empréstimo</label>
+
                         <input type="date" id="data-emprestimo">
+
                     </div>
 
                     <div class="form-group">
+
                         <label>Data prevista de devolução</label>
+
                         <input type="date" id="data-devolucao">
+
                     </div>
+
                 </div>
 
                 <div class="form-group">
+
                     <label>Status</label>
+
                     <select id="status">
                         <option value="ativo">Ativo</option>
                         <option value="devolvido">Devolvido</option>
                         <option value="atrasado">Atrasado</option>
                     </select>
+
                 </div>
 
                 <div class="form-group">
+
                     <label>Observações</label>
-                    <textarea id="observacoes" placeholder="Observações sobre o empréstimo..."></textarea>
+
+                    <textarea
+                        id="observacoes"
+                        placeholder="Observações sobre o empréstimo..."
+                    ></textarea>
+
                 </div>
 
                 <div class="modal-actions">
-                    <button type="button" class="btn-secondary" id="btn-cancelar">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="btn-cancelar"
+                    >
                         Cancelar
                     </button>
 
                     <button type="submit" class="btn">
                         Salvar Empréstimo
                     </button>
+
                 </div>
 
             </form>
@@ -225,7 +287,7 @@
 
     </div>
 
-    <script src="js/emprestimos.js"></script>
+    <script src="../js/emprestimos.js"></script>
 
 </body>
 </html>

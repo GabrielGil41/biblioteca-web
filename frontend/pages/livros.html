@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
     <title>Biblioteca - Livros</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+    href="https://fonts.googleapis.com">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tabelas.css">
-    <link rel="stylesheet" href="css/forms.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tabelas.css">
+    <link rel="stylesheet" href="../css/forms.css">
 </head>
 
 <body>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
+
         <div class="logo">
             <i class="fa-solid fa-book"></i>
             Biblioteca
         </div>
 
         <nav>
+
             <a href="index.html">
                 <i class="fa-solid fa-house"></i>
                 Dashboard
@@ -44,24 +61,34 @@
                 <i class="fa-solid fa-right-left"></i>
                 Empréstimos
             </a>
+
         </nav>
+
     </aside>
 
+    <!-- MAIN -->
     <main class="main">
 
+        <!-- TOPO -->
         <div class="topbar">
+
             <div>
                 <h1>Livros</h1>
-                <p class="subtitle">Gerencie o acervo da biblioteca</p>
+                <p class="subtitle">
+                    Gerencie o acervo da biblioteca
+                </p>
             </div>
 
             <button class="btn" id="btn-novo-livro">
                 <i class="fa-solid fa-plus"></i>
                 Novo Livro
             </button>
+
         </div>
 
+        <!-- CARDS -->
         <section class="cards cards-3">
+
             <div class="card">
                 <i class="fa-solid fa-book"></i>
                 <h2 id="total-livros">0</h2>
@@ -79,24 +106,32 @@
                 <h2 id="livros-emprestados">0</h2>
                 <p>Emprestados</p>
             </div>
+
         </section>
 
+        <!-- TABELA -->
         <section class="table-container">
 
             <div class="table-header">
+
                 <h2>Lista de Livros</h2>
 
                 <div class="search-box">
-                    <input 
-                        type="text" 
-                        id="buscar-livro" 
+
+                    <input
+                        type="text"
+                        id="buscar-livro"
                         placeholder="Buscar livro..."
                     >
+
                 </div>
+
             </div>
 
             <table>
+
                 <thead>
+
                     <tr>
                         <th>ID</th>
                         <th>Título</th>
@@ -106,28 +141,36 @@
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
+
                 </thead>
 
-                <!-- 
-                    TABELA VAZIA.
-                    O backend/JS vai preencher os livros aqui.
-                -->
                 <tbody id="tabela-livros"></tbody>
+
             </table>
 
         </section>
 
     </main>
 
+    <!-- MODAL -->
     <div class="modal" id="modal-livro">
+
         <div class="modal-content">
 
             <div class="modal-header">
-                <h2 id="titulo-modal">Cadastrar Livro</h2>
 
-                <button class="btn-close" type="button" id="btn-fechar-modal-livro">
+                <h2 id="titulo-modal">
+                    Cadastrar Livro
+                </h2>
+
+                <button
+                    class="btn-close"
+                    type="button"
+                    id="btn-fechar-modal-livro"
+                >
                     <i class="fa-solid fa-xmark"></i>
                 </button>
+
             </div>
 
             <form id="form-livro">
@@ -135,55 +178,116 @@
                 <input type="hidden" id="livro-id">
 
                 <div class="form-row">
+
                     <div class="form-group">
+
                         <label for="titulo">Título</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Ex: Dom Casmurro" required>
+
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            placeholder="Ex: Dom Casmurro"
+                            required
+                        >
+
                     </div>
 
                     <div class="form-group">
+
                         <label for="autor">Autor</label>
-                        <input type="text" id="autor" name="autor" placeholder="Ex: Machado de Assis" required>
+
+                        <input
+                            type="text"
+                            id="autor"
+                            name="autor"
+                            placeholder="Ex: Machado de Assis"
+                            required
+                        >
+
                     </div>
+
                 </div>
 
                 <div class="form-row">
+
                     <div class="form-group">
+
                         <label for="categoria">Categoria</label>
-                        <input type="text" id="categoria" name="categoria" placeholder="Ex: Romance" required>
+
+                        <input
+                            type="text"
+                            id="categoria"
+                            name="categoria"
+                            placeholder="Ex: Romance"
+                            required
+                        >
+
                     </div>
 
                     <div class="form-group">
+
                         <label for="isbn">ISBN</label>
-                        <input type="text" id="isbn" name="isbn" placeholder="Ex: 978-85-359-0277-0" required>
+
+                        <input
+                            type="text"
+                            id="isbn"
+                            name="isbn"
+                            placeholder="Ex: 978-85-359-0277-0"
+                            required
+                        >
+
                     </div>
+
                 </div>
 
                 <div class="form-group">
+
                     <label for="status">Status</label>
+
                     <select id="status" name="status" required>
-                        <option value="">Selecione o status</option>
-                        <option value="Disponível">Disponível</option>
-                        <option value="Emprestado">Emprestado</option>
+
+                        <option value="">
+                            Selecione o status
+                        </option>
+
+                        <option value="Disponível">
+                            Disponível
+                        </option>
+
+                        <option value="Emprestado">
+                            Emprestado
+                        </option>
+
                     </select>
+
                 </div>
 
                 <div class="modal-actions">
-                    <button type="button" class="btn-secondary" id="btn-cancelar-livro">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="btn-cancelar-livro"
+                    >
                         Cancelar
                     </button>
 
                     <button type="submit" class="btn">
                         Salvar Livro
                     </button>
+
                 </div>
 
             </form>
 
         </div>
+
     </div>
 
-    <script src="js/api.js"></script>
-    <script src="js/livros.js"></script>
+    <!-- JS -->
+    <script src="../js/api.js"></script>
+    <script src="../js/livros.js"></script>
 
 </body>
 </html>

@@ -77,107 +77,113 @@ biblioteca-web
 └── README.md
 
 ⚙️ Funcionalidades
-📚 Gerenciamento de Livros
 
+Gerenciamento de Livros
 O sistema permite o gerenciamento completo do acervo da biblioteca.
 
 Funcionalidades disponíveis:
-cadastro de livros;
-listagem de livros;
-edição de informações;
-exclusão de registros;
-organização do acervo;
-integração com API REST;
-atualização dinâmica da interface.
-👤 Gerenciamento de Usuários
+- Cadastro de livros;
+- Listagem de livros;
+- Edição de informações;
+- Exclusão de registros;
+- Organização do acervo;
+- Integração com API REST;
+- Atualização dinâmica da interface.
 
+Gerenciamento de Usuários
 Módulo responsável pelo controle dos usuários cadastrados na biblioteca.
 
 Funcionalidades disponíveis:
-cadastro de usuários;
-consulta de usuários;
-atualização de dados;
-remoção de usuários;
-gerenciamento via API;
-integração assíncrona com frontend.
-🔄 Gerenciamento de Empréstimos
+- Cadastro de usuários;
+- Consulta de usuários;
+- Atualização de dados;
+- Remoção de usuários;
+- Gerenciamento via API;
+- Integração assíncrona com frontend.
 
+Gerenciamento de Empréstimos
 Responsável pelo controle de empréstimos e devoluções de livros.
 
 Funcionalidades disponíveis:
-registro de empréstimos;
-controle de devoluções;
-atualização de status;
-exclusão de empréstimos;
-vínculo entre usuários e livros;
-gerenciamento completo via API REST.
-📄 Documentação da API
+- Registro de empréstimos;
+- Controle de devoluções;
+- Atualização de status;
+- Exclusão de empréstimos;
+- Vínculo entre usuários e livros;
+- Gerenciamento completo via API REST.
 
+Documentação da API
 O projeto possui documentação integrada utilizando Swagger/OpenAPI.
 
 Recursos disponíveis:
-visualização de endpoints;
-testes de rotas;
-documentação automática;
-organização por módulos;
-padronização REST.
-🔌 API REST
+- Visualização de endpoints;
+- Testes de rotas;
+- Documentação automática;
+- Organização por módulos;
+- Padronização REST.
 
+API REST
 A API foi desenvolvida seguindo o padrão REST.
 
-📚 Livros
+Livros
 GET /livros
 POST /livros
 PUT /livros/:id
 DELETE /livros/:id
-👤 Usuários
+
+Usuários
 GET /usuarios
 POST /usuarios
 PUT /usuarios/:id
 DELETE /usuarios/:id
-🔄 Empréstimos
+
+Empréstimos
 GET /emprestimos
 POST /emprestimos
 PUT /emprestimos/:id
 DELETE /emprestimos/:id
-📑 Swagger
 
+Swagger
 A documentação da API pode ser acessada em:
 
 http://localhost:3000/api-docs
-🗄 Banco de Dados
 
+
+Banco de Dados
 O sistema utiliza:
 
-MongoDB Atlas
-Mongoose ODM
+- MongoDB Atlas
+- Mongoose ODM
 
 A conexão é realizada através de variável de ambiente:
-
 MONGO_URI=sua_string_de_conexao
-▶️ Como Executar o Projeto
-1️⃣ Clonar o repositório
+
+
+"Como Executar o Projeto?"
+
+1. Clonar o repositório
 git clone URL_DO_REPOSITORIO
-2️⃣ Acessar o backend
+
+2. Acessar o backend
 cd backend
-3️⃣ Instalar dependências
+
+3. Instalar dependências
 npm install
-4️⃣ Configurar o arquivo .env
+
+4. Configurar o arquivo .env
 PORT=3000
 MONGO_URI=sua_string_mongodb
-5️⃣ Executar o backend
+
+5. Executar o backend
 npm run dev
-6️⃣ Executar o frontend
 
+6. Executar o frontend
 Abrir:
-
 frontend/index.html
-
 ou utilizar a extensão:
-
 Live Server
-🧠 Arquitetura do Sistema
 
+Arquitetura do Sistema
 O projeto segue arquitetura em camadas:
 
 Frontend
@@ -191,63 +197,55 @@ Services
 Models
 ↓
 MongoDB
-🔄 Fluxo da Aplicação
-Usuário acessa o frontend
-Frontend envia requisição via Fetch API
-Backend recebe requisição
-Controller processa a requisição
-Service executa regra de negócio
-Model acessa o MongoDB
-Resposta retorna ao frontend
-📸 Telas do Sistema
-🏠 Dashboard
-visão geral do sistema;
-cards estatísticos;
-navegação entre módulos.
-📚 Livros
-gerenciamento completo de livros;
-cadastro;
-edição;
-exclusão;
-listagem.
-👤 Usuários
-gerenciamento completo de usuários;
-cadastro;
-edição;
-exclusão;
-listagem.
-🔄 Empréstimos
-controle de empréstimos;
-controle de devoluções;
-atualização de status;
-gerenciamento de registros.
-🔒 Boas Práticas Aplicadas
-Arquitetura MVC
-API REST
-Separação em camadas
-Uso de variáveis de ambiente
-Documentação Swagger/OpenAPI
-Versionamento com Git
-Repositório GitHub
-Uso de .gitignore
-Organização modular
-Comunicação assíncrona
-Código estruturado e reutilizável
-🚧 Melhorias Futuras
-autenticação JWT;
-controle de permissões;
-paginação;
-dashboard analítico;
-upload de imagens;
-relatórios PDF;
-testes automatizados;
-deploy em nuvem;
-recuperação de senha;
-notificações de atraso.
+
+Fluxo da Aplicação
+- Usuário acessa o frontend
+- Frontend envia requisição via Fetch API
+- Backend recebe requisição
+- Controller processa a requisição
+- Service executa regra de negócio
+- Model acessa o MongoDB
+- Resposta retorna ao frontend
+
+Telas do Sistema
+
+Dashboard
+- visão geral do sistema;
+- cards estatísticos;
+- navegação entre módulos.
+
+Livros
+- gerenciamento completo de livros;
+- cadastro;
+- edição;
+- exclusão;
+- listagem.
+
+Usuários
+- gerenciamento completo de usuários;
+- cadastro;
+- edição;
+- exclusão;
+- listagem.
+
+Empréstimos
+- controle de empréstimos;
+- controle de devoluções;
+- atualização de status;
+- gerenciamento de registros.
+
+Boas Práticas Aplicadas
+- Arquitetura MVC
+- API REST
+- Separação em camadas
+- Uso de variáveis de ambiente
+- Documentação Swagger/OpenAPI
+- Versionamento com Git
+- Repositório GitHub
+- Uso de .gitignore
+- Organização modular
+- Comunicação assíncrona
+- Código estruturado e reutilizável
+
 👨‍💻 Autor
-
-Gabriel Freitas
-
-📌 Status do Projeto
-
-🚀 Em desenvolvimento
+Gabriel Henrique de Freitas Gil

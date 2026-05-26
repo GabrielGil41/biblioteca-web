@@ -24,14 +24,9 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet"
-    href="css/style.css">
-
-    <link rel="stylesheet"
-    href="css/dashboard.css">
-
-    <link rel="stylesheet"
-    href="css/tabelas.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/tabelas.css">
 </head>
 
 <body>
@@ -43,7 +38,7 @@
         </div>
 
         <nav>
-            <a href="index.html">
+            <a href="index.html" class="active">
                 <i class="fa-solid fa-house"></i>
                 Dashboard
             </a>
@@ -70,9 +65,12 @@
         <!-- TOPO -->
         <div class="topbar">
             <h1>Dashboard</h1>
+
             <div class="search-box">
-                <input type="text"
-                placeholder="Pesquisar...">
+                <input
+                    type="text"
+                    placeholder="Pesquisar..."
+                >
             </div>
         </div>
 
@@ -80,36 +78,37 @@
         <section class="cards">
             <div class="card">
                 <i class="fa-solid fa-book"></i>
-                <h2></h2>
+                <h2 id="total-livros">0</h2>
                 <p>Livros cadastrados</p>
             </div>
 
             <div class="card">
                 <i class="fa-solid fa-users"></i>
-                <h2></h2>
+                <h2 id="total-usuarios">0</h2>
                 <p>Usuários ativos</p>
             </div>
 
             <div class="card">
                 <i class="fa-solid fa-right-left"></i>
-                <h2></h2>
+                <h2 id="total-emprestimos">0</h2>
                 <p>Empréstimos ativos</p>
             </div>
 
             <div class="card">
                 <i class="fa-solid fa-clock"></i>
-                <h2></h2>
+                <h2 id="devolucoes-pendentes">0</h2>
                 <p>Devoluções pendentes</p>
             </div>
-
         </section>
+
         <!-- TABELA -->
         <section class="table-container">
             <div class="table-header">
                 <h2>Últimos Empréstimos</h2>
-                <button class="btn">
+
+                <a href="emprestimos.html" class="btn">
                     + Novo Empréstimo
-                </button>
+                </a>
             </div>
 
             <table>
@@ -123,12 +122,13 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="ultimos-emprestimos">
                 </tbody>
             </table>
         </section>
     </main>
+
     <!-- JS -->
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>
