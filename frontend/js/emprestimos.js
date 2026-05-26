@@ -297,3 +297,18 @@ function formatarDataInput(data) {
 
     return new Date(data).toISOString().split("T")[0];
 }
+
+function limitarAnoData(event) {
+
+    let valor = event.target.value;
+
+    if (!valor) return;
+
+    const partes = valor.split("-");
+
+    if (partes[0].length > 4) {
+        partes[0] = partes[0].substring(0, 4);
+    }
+
+    event.target.value = partes.join("-");
+}

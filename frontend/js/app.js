@@ -14,6 +14,10 @@ async function carregarDashboard() {
             fetch(API_EMPRESTIMOS)
         ]);
 
+        if (!resLivros.ok || !resUsuarios.ok || !resEmprestimos.ok) {
+            throw new Error("Erro ao buscar dados do dashboard");
+        }
+
         const livros = await resLivros.json();
         const usuarios = await resUsuarios.json();
         const emprestimos = await resEmprestimos.json();
@@ -33,20 +37,31 @@ function atualizarCardsDashboard(livros, usuarios, emprestimos) {
     const totalEmprestimos = document.getElementById("total-emprestimos");
     const devolucoesPendentes = document.getElementById("devolucoes-pendentes");
 
-    const usuariosAtivos = usuarios.filter(usuario => usuario.status === "ativo").length;
+    const totalUsuariosSistema = usuarios.length;
 
     const emprestimosAtivos = emprestimos.filter(
-        emprestimo => emprestimo.status === "emprestado" || emprestimo.status === "ativo"
+        emprestimo => emprestimo.status === "emprestado"
     ).length;
 
     const pendentes = emprestimos.filter(
-        emprestimo => emprestimo.status === "emprestado" || emprestimo.status === "ativo"
+        emprestimo => emprestimo.status === "emprestado"
     ).length;
 
-    if (totalLivros) totalLivros.textContent = livros.length;
-    if (totalUsuarios) totalUsuarios.textContent = usuariosAtivos;
-    if (totalEmprestimos) totalEmprestimos.textContent = emprestimosAtivos;
-    if (devolucoesPendentes) devolucoesPendentes.textContent = pendentes;
+    if (totalLivros) {
+        totalLivros.textContent = livros.length;
+    }
+
+    if (totalUsuarios) {
+        totalUsuarios.textContent = totalUsuariosSistema;
+    }
+
+    if (totalEmprestimos) {
+        totalEmprestimos.textContent = emprestimosAtivos;
+    }
+
+    if (devolucoesPendentes) {
+        devolucoesPendentes.textContent = pendentes;
+    }
 }
 
 function renderizarUltimosEmprestimos(emprestimos) {

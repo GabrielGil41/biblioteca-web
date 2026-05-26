@@ -74,6 +74,7 @@
 
             <div>
                 <h1>Livros</h1>
+
                 <p class="subtitle">
                     Gerencie o acervo da biblioteca
                 </p>
@@ -136,8 +137,9 @@
                         <th>ID</th>
                         <th>Título</th>
                         <th>Autor</th>
-                        <th>Categoria</th>
+                        <th>Editora</th>
                         <th>ISBN</th>
+                        <th>Categoria</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
@@ -186,7 +188,6 @@
                         <input
                             type="text"
                             id="titulo"
-                            name="titulo"
                             placeholder="Ex: Dom Casmurro"
                             required
                         >
@@ -200,7 +201,6 @@
                         <input
                             type="text"
                             id="autor"
-                            name="autor"
                             placeholder="Ex: Machado de Assis"
                             required
                         >
@@ -213,17 +213,33 @@
 
                     <div class="form-group">
 
-                        <label for="categoria">Categoria</label>
+                        <label for="editora">Editora</label>
 
                         <input
                             type="text"
-                            id="categoria"
-                            name="categoria"
-                            placeholder="Ex: Romance"
+                            id="editora"
+                            placeholder="Ex: Companhia das Letras"
                             required
                         >
 
                     </div>
+
+                    <div class="form-group">
+
+                        <label for="edicao">Edição</label>
+
+                        <input
+                            type="text"
+                            id="edicao"
+                            placeholder="Ex: 1ª edição"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
 
                     <div class="form-group">
 
@@ -232,8 +248,20 @@
                         <input
                             type="text"
                             id="isbn"
-                            name="isbn"
-                            placeholder="Ex: 978-85-359-0277-0"
+                            placeholder="Ex: 978-8-5359-0277-0"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="idioma">Idioma</label>
+
+                        <input
+                            type="text"
+                            id="idioma"
+                            placeholder="Ex: Português"
                             required
                         >
 
@@ -241,25 +269,80 @@
 
                 </div>
 
-                <div class="form-group">
+                <div class="form-row">
 
-                    <label for="status">Status</label>
+                    <div class="form-group">
 
-                    <select id="status" name="status" required>
+                        <label for="genero">Gênero</label>
 
-                        <option value="">
-                            Selecione o status
-                        </option>
+                        <input
+                            type="text"
+                            id="genero"
+                            placeholder="Ex: Romance"
+                            required
+                        >
 
-                        <option value="Disponível">
-                            Disponível
-                        </option>
+                    </div>
 
-                        <option value="Emprestado">
-                            Emprestado
-                        </option>
+                    <div class="form-group">
 
-                    </select>
+                        <label for="categoria">Categoria</label>
+
+                        <input
+                            type="text"
+                            id="categoria"
+                            placeholder="Ex: Literatura Brasileira"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="localizacao-fisica">Localização física</label>
+
+                        <input
+                            type="text"
+                            id="localizacao-fisica"
+                            placeholder="Ex: Estante A - Prateleira 3"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="status">Status</label>
+
+                        <select id="status" required>
+
+                            <option value="">
+                                Selecione o status
+                            </option>
+
+                            <option value="Disponível">
+                                Disponível
+                            </option>
+
+                            <option value="Emprestado">
+                                Emprestado
+                            </option>
+
+                            <option value="Reservado">
+                                Reservado
+                            </option>
+
+                            <option value="Indisponível">
+                                Indisponível
+                            </option>
+
+                        </select>
+
+                    </div>
 
                 </div>
 

@@ -80,3 +80,22 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.modal {
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-actions {
+    position: sticky;
+    bottom: 0;
+    background: #ffffff;
+    padding-top: 16px;
+    margin-top: 20px;
+    border-top: 1px solid #E5E7EB;
+}
