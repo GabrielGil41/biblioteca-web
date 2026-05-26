@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+console.log("TESTE: app.js atualizado está rodando");
+
 const connectDatabase = require("./database/connection");
 const livroRoutes = require("./routes/livroRoutes");
 
