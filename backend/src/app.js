@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
+
 const connectDatabase = require("./database/connection");
 
 const livroRoutes = require("./routes/livroRoutes");
@@ -14,6 +17,12 @@ app.use(cors());
 app.use(express.json());
 
 connectDatabase();
+
+app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec)
+);
 
 app.get("/", (req, res) => {
     res.status(200).json({
