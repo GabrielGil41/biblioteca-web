@@ -6,6 +6,7 @@ const connectDatabase = require("./database/connection");
 
 const livroRoutes = require("./routes/livroRoutes");
 const usuarioRoutes = require("./routes/usuarioRoutes");
+const emprestimoRoutes = require("./routes/emprestimoRoutes");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.use("/livros", livroRoutes);
 app.use("/usuarios", usuarioRoutes);
+app.use("/emprestimos", emprestimoRoutes);
 
 const PORT = process.env.PORT || 3000;
 
