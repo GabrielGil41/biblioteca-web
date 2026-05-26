@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formUsuario = document.getElementById("form-usuario");
     const campoBusca = document.getElementById("buscar-usuario");
     const filtroStatus = document.getElementById("filtro-status");
+    const campoTelefone = document.getElementById("telefone");
 
     if (btnNovoUsuario) btnNovoUsuario.addEventListener("click", abrirModalUsuario);
     if (btnFecharModal) btnFecharModal.addEventListener("click", fecharModalUsuario);
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formUsuario) formUsuario.addEventListener("submit", salvarUsuario);
     if (campoBusca) campoBusca.addEventListener("keyup", filtrarUsuarios);
     if (filtroStatus) filtroStatus.addEventListener("change", filtrarUsuarios);
+    if (campoTelefone) campoTelefone.addEventListener("input", formatarTelefone);
 });
 
 async function carregarUsuarios() {
@@ -35,7 +37,6 @@ async function carregarUsuarios() {
 
 function renderizarUsuarios(listaUsuarios) {
     const tabela = document.getElementById("tabela-usuarios");
-
     if (!tabela) return;
 
     tabela.innerHTML = "";
@@ -105,18 +106,27 @@ async function salvarUsuario(event) {
     event.preventDefault();
 
     const id = document.getElementById("usuario-id").value;
+    const telefone = document.getElementById("telefone").value;
+    const telefoneLimpo = telefone.replace(/\D/g, "");
+
+    if (telefoneLimpo.length !== 11) {
+        alert("O telefone deve conter 11 dígitos. Exemplo: (31) 9 9999-9999");
+        return;
+    }
 
     const usuario = {
         nome: document.getElementById("nome").value,
         email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
+        telefone: telefone,
         matricula: document.getElementById("matricula").value,
         status: document.getElementById("status").value
     };
 
     try {
+        let resposta;
+
         if (id) {
-            await fetch(`${API_URL_USUARIOS}/${id}`, {
+            resposta = await fetch(`${API_URL_USUARIOS}/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -124,13 +134,17 @@ async function salvarUsuario(event) {
                 body: JSON.stringify(usuario)
             });
         } else {
-            await fetch(API_URL_USUARIOS, {
+            resposta = await fetch(API_URL_USUARIOS, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(usuario)
             });
+        }
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao salvar usuário");
         }
 
         fecharModalUsuario();
@@ -143,7 +157,6 @@ async function salvarUsuario(event) {
 
 function editarUsuario(id) {
     const usuario = usuarios.find(usuario => usuario._id === id);
-
     if (!usuario) return;
 
     document.getElementById("usuario-id").value = usuario._id;
@@ -159,13 +172,16 @@ function editarUsuario(id) {
 
 async function deletarUsuario(id) {
     const confirmar = confirm("Tem certeza que deseja excluir este usuário?");
-
     if (!confirmar) return;
 
     try {
-        await fetch(`${API_URL_USUARIOS}/${id}`, {
+        const resposta = await fetch(`${API_URL_USUARIOS}/${id}`, {
             method: "DELETE"
         });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao deletar usuário");
+        }
 
         carregarUsuarios();
     } catch (error) {
@@ -191,4 +207,34 @@ function filtrarUsuarios() {
     });
 
     renderizarUsuarios(usuariosFiltrados);
+}
+
+function formatarTelefone(event) {
+    let telefone = event.target.value.replace(/\D/g, "");
+
+    telefone = telefone.substring(0, 11);
+
+    if (telefone.length > 7) {
+        telefone = telefone.replace(
+            /^(\d{2})(\d{1})(\d{4})(\d{0,4}).*/,
+            "($1) $2 $3-$4"
+        );
+    } else if (telefone.length > 3) {
+        telefone = telefone.replace(
+            /^(\d{2})(\d{1})(\d{0,4}).*/,
+            "($1) $2 $3"
+        );
+    } else if (telefone.length > 2) {
+        telefone = telefone.replace(
+            /^(\d{2})(\d{0,1}).*/,
+            "($1) $2"
+        );
+    } else if (telefone.length > 0) {
+        telefone = telefone.replace(
+            /^(\d*)/,
+            "($1"
+        );
+    }
+
+    event.target.value = telefone;
 }

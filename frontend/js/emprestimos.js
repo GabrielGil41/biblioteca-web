@@ -167,6 +167,14 @@ async function salvarEmprestimo(event) {
         status: document.getElementById("status").value
     };
 
+    const dataEmprestimo = new Date(emprestimo.dataEmprestimo);
+    const dataDevolucao = new Date(emprestimo.dataDevolucao);
+
+        if (dataDevolucao < dataEmprestimo) {
+            alert("A data de devolução não pode ser anterior à data do empréstimo.");
+            return;
+}
+
     try {
         if (id) {
             await fetch(`${API_URL_EMPRESTIMOS}/${id}`, {

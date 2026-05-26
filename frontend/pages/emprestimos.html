@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
     <title>Biblioteca - Empréstimos</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+    href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tabelas.css">
     <link rel="stylesheet" href="../css/forms.css">
@@ -20,6 +33,7 @@
 
 <body>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
         <div class="logo">
@@ -53,24 +67,33 @@
 
     </aside>
 
+    <!-- MAIN -->
     <main class="main">
 
+        <!-- TOPO -->
         <div class="topbar">
 
             <div>
+
                 <h1>Empréstimos</h1>
+
                 <p class="subtitle">
                     Controle empréstimos, devoluções e atrasos
                 </p>
+
             </div>
 
             <button class="btn" id="btn-novo-emprestimo">
+
                 <i class="fa-solid fa-plus"></i>
+
                 Novo Empréstimo
+
             </button>
 
         </div>
 
+        <!-- CARDS -->
         <section class="emprestimos-cards">
 
             <div class="emprestimo-card">
@@ -127,6 +150,7 @@
 
         </section>
 
+        <!-- TABELA -->
         <section class="table-container">
 
             <div class="table-header">
@@ -136,18 +160,33 @@
                 <div class="table-actions">
 
                     <div class="search-box">
+
                         <input
                             type="text"
                             id="buscar-emprestimo"
                             placeholder="Buscar empréstimo..."
                         >
+
                     </div>
 
                     <select id="filtro-status" class="filter-select">
-                        <option value="">Todos</option>
-                        <option value="ativo">Ativos</option>
-                        <option value="devolvido">Devolvidos</option>
-                        <option value="atrasado">Atrasados</option>
+
+                        <option value="">
+                            Todos
+                        </option>
+
+                        <option value="emprestado">
+                            Emprestados
+                        </option>
+
+                        <option value="devolvido">
+                            Devolvidos
+                        </option>
+
+                        <option value="atrasado">
+                            Atrasados
+                        </option>
+
                     </select>
 
                 </div>
@@ -180,16 +219,21 @@
 
     </main>
 
+    <!-- MODAL -->
     <div class="modal" id="modal-emprestimo">
 
         <div class="modal-content">
 
             <div class="modal-header">
 
-                <h2>Cadastrar Empréstimo</h2>
+                <h2>
+                    Cadastrar Empréstimo
+                </h2>
 
                 <button class="btn-close" id="btn-fechar-modal">
+
                     <i class="fa-solid fa-xmark"></i>
+
                 </button>
 
             </div>
@@ -204,8 +248,12 @@
 
                         <label>Usuário</label>
 
-                        <select id="usuario">
-                            <option value="">Selecione um usuário</option>
+                        <select id="usuario" required>
+
+                            <option value="">
+                                Selecione um usuário
+                            </option>
+
                         </select>
 
                     </div>
@@ -214,8 +262,12 @@
 
                         <label>Livro</label>
 
-                        <select id="livro">
-                            <option value="">Selecione um livro</option>
+                        <select id="livro" required>
+
+                            <option value="">
+                                Selecione um livro
+                            </option>
+
                         </select>
 
                     </div>
@@ -228,7 +280,11 @@
 
                         <label>Data do empréstimo</label>
 
-                        <input type="date" id="data-emprestimo">
+                        <input
+                            type="date"
+                            id="data-emprestimo"
+                            required
+                        >
 
                     </div>
 
@@ -236,7 +292,11 @@
 
                         <label>Data prevista de devolução</label>
 
-                        <input type="date" id="data-devolucao">
+                        <input
+                            type="date"
+                            id="data-devolucao"
+                            required
+                        >
 
                     </div>
 
@@ -246,10 +306,16 @@
 
                     <label>Status</label>
 
-                    <select id="status">
-                        <option value="ativo">Ativo</option>
-                        <option value="devolvido">Devolvido</option>
-                        <option value="atrasado">Atrasado</option>
+                    <select id="status" required>
+
+                        <option value="emprestado">
+                            Emprestado
+                        </option>
+
+                        <option value="devolvido">
+                            Devolvido
+                        </option>
+
                     </select>
 
                 </div>
@@ -276,7 +342,9 @@
                     </button>
 
                     <button type="submit" class="btn">
+
                         Salvar Empréstimo
+
                     </button>
 
                 </div>
@@ -287,6 +355,7 @@
 
     </div>
 
+    <!-- JS -->
     <script src="../js/emprestimos.js"></script>
 
 </body>
