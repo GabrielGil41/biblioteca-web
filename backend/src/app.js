@@ -2,10 +2,10 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-console.log("TESTE: app.js atualizado está rodando");
-
 const connectDatabase = require("./database/connection");
+
 const livroRoutes = require("./routes/livroRoutes");
+const usuarioRoutes = require("./routes/usuarioRoutes");
 
 const app = express();
 
@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/livros", livroRoutes);
+app.use("/usuarios", usuarioRoutes);
 
 const PORT = process.env.PORT || 3000;
 
