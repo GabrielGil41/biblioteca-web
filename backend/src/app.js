@@ -11,6 +11,8 @@ const livroRoutes = require("./routes/livroRoutes");
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const emprestimoRoutes = require("./routes/emprestimoRoutes");
 
+const errorHandler = require("./middlewares/errorHandler");
+
 const app = express();
 
 app.use(cors());
@@ -33,6 +35,14 @@ app.get("/", (req, res) => {
 app.use("/livros", livroRoutes);
 app.use("/usuarios", usuarioRoutes);
 app.use("/emprestimos", emprestimoRoutes);
+
+app.use((req, res) => {
+    res.status(404).json({
+        mensagem: "Rota não encontrada"
+    });
+});
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
