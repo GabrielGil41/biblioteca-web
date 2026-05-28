@@ -10,6 +10,7 @@ const connectDatabase = require("./database/connection");
 const livroRoutes = require("./routes/livroRoutes");
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const emprestimoRoutes = require("./routes/emprestimoRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -35,6 +36,7 @@ app.get("/", (req, res) => {
 app.use("/livros", livroRoutes);
 app.use("/usuarios", usuarioRoutes);
 app.use("/emprestimos", emprestimoRoutes);
+app.use("/auth", authRoutes);
 
 app.use((req, res) => {
     res.status(404).json({

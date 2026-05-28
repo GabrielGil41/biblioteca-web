@@ -4,6 +4,9 @@ const router = express.Router();
 
 const emprestimoController = require("../controllers/emprestimoController");
 
+const authMiddleware =
+    require("../middlewares/authMiddleware");
+
 /**
  * @swagger
  * tags:
@@ -128,8 +131,11 @@ router.get("/:id", emprestimoController.buscarEmprestimoPorId);
  *       500:
  *         description: Erro interno ao criar empréstimo
  */
-router.post("/", emprestimoController.criarEmprestimo);
-
+router.post(
+    "/",
+    authMiddleware,
+    emprestimoController.criarEmprestimo
+);
 /**
  * @swagger
  * /emprestimos/{id}:
@@ -167,8 +173,11 @@ router.post("/", emprestimoController.criarEmprestimo);
  *       500:
  *         description: Erro interno ao atualizar empréstimo
  */
-router.put("/:id", emprestimoController.atualizarEmprestimo);
-
+router.post(
+    "/",
+    authMiddleware,
+    emprestimoController.criarEmprestimo
+);
 /**
  * @swagger
  * /emprestimos/{id}:
@@ -192,6 +201,10 @@ router.put("/:id", emprestimoController.atualizarEmprestimo);
  *       500:
  *         description: Erro interno ao remover empréstimo
  */
-router.delete("/:id", emprestimoController.deletarEmprestimo);
+router.post(
+    "/",
+    authMiddleware,
+    emprestimoController.criarEmprestimo
+);
 
 module.exports = router;
