@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    container_name: biblioteca-backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  frontend:
+    build: ./frontend
+    container_name: biblioteca-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
