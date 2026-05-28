@@ -4,8 +4,8 @@ const router = express.Router();
 
 const emprestimoController = require("../controllers/emprestimoController");
 
-const authMiddleware =
-    require("../middlewares/authMiddleware");
+const authMiddleware = require("../middlewares/authMiddleware");
+const roleMiddleware = require("../middlewares/roleMiddleware");
 
 /**
  * @swagger
@@ -59,17 +59,11 @@ const authMiddleware =
  * /emprestimos:
  *   get:
  *     summary: Lista todos os empréstimos
- *     description: Retorna todos os empréstimos cadastrados, incluindo informações relacionadas de usuário e livro quando populadas pelo backend.
+ *     description: Retorna todos os empréstimos cadastrados.
  *     tags: [Empréstimos]
  *     responses:
  *       200:
  *         description: Lista de empréstimos retornada com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Emprestimo'
  *       500:
  *         description: Erro interno ao listar empréstimos
  */
@@ -93,10 +87,6 @@ router.get("/", emprestimoController.listarEmprestimos);
  *     responses:
  *       200:
  *         description: Empréstimo encontrado com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Emprestimo'
  *       404:
  *         description: Empréstimo não encontrado
  *       500:
@@ -109,8 +99,10 @@ router.get("/:id", emprestimoController.buscarEmprestimoPorId);
  * /emprestimos:
  *   post:
  *     summary: Cria um novo empréstimo
- *     description: Registra um novo empréstimo vinculando um usuário a um livro. A data de devolução deve ser igual ou posterior à data do empréstimo.
+ *     description: Registra um novo empréstimo. Requer autenticação JWT e perfil admin ou bibliotecário.
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -128,21 +120,29 @@ router.get("/:id", emprestimoController.buscarEmprestimoPorId);
  *         description: Empréstimo criado com sucesso
  *       400:
  *         description: Dados inválidos ou campos obrigatórios ausentes
+ *       401:
+ *         description: Token não informado ou inválido
+ *       403:
+ *         description: Perfil sem permissão
  *       500:
  *         description: Erro interno ao criar empréstimo
  */
 router.post(
     "/",
     authMiddleware,
+    roleMiddleware("admin", "bibliotecario"),
     emprestimoController.criarEmprestimo
 );
+
 /**
  * @swagger
  * /emprestimos/{id}:
  *   put:
  *     summary: Atualiza um empréstimo
- *     description: Atualiza os dados de um empréstimo, incluindo status de devolução.
+ *     description: Atualiza os dados de um empréstimo. Requer autenticação JWT e perfil admin ou bibliotecário.
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -168,23 +168,31 @@ router.post(
  *         description: Empréstimo atualizado com sucesso
  *       400:
  *         description: Dados inválidos
+ *       401:
+ *         description: Token não informado ou inválido
+ *       403:
+ *         description: Perfil sem permissão
  *       404:
  *         description: Empréstimo não encontrado
  *       500:
  *         description: Erro interno ao atualizar empréstimo
  */
-router.post(
-    "/",
+router.put(
+    "/:id",
     authMiddleware,
-    emprestimoController.criarEmprestimo
+    roleMiddleware("admin", "bibliotecario"),
+    emprestimoController.atualizarEmprestimo
 );
+
 /**
  * @swagger
  * /emprestimos/{id}:
  *   delete:
  *     summary: Remove um empréstimo
- *     description: Exclui um empréstimo do sistema a partir do ID informado.
+ *     description: Exclui um empréstimo do sistema. Requer autenticação JWT e perfil admin.
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -196,15 +204,20 @@ router.post(
  *     responses:
  *       204:
  *         description: Empréstimo removido com sucesso
+ *       401:
+ *         description: Token não informado ou inválido
+ *       403:
+ *         description: Perfil sem permissão
  *       404:
  *         description: Empréstimo não encontrado
  *       500:
  *         description: Erro interno ao remover empréstimo
  */
-router.post(
-    "/",
+router.delete(
+    "/:id",
     authMiddleware,
-    emprestimoController.criarEmprestimo
+    roleMiddleware("admin"),
+    emprestimoController.deletarEmprestimo
 );
 
 module.exports = router;
